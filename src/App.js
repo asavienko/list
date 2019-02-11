@@ -14,6 +14,10 @@ class App extends Component {
   addElement = (value) => {
     this.state.arrayOfElements.push(value);
     console.log(this.state.arrayOfElements)
+    //possible todo
+    //const newArray = this.state.arrayOfElements.concat(value);
+    //this.setState({arrayOfElements: newArray});
+    //
   };
 
   showElements = ({arrayOfElements: array}) => {
@@ -27,7 +31,7 @@ class App extends Component {
   };
 
   render() {
-
+    //debug what you have here in this.state
     return (
       <div className="App">
         <InputComponent addElement={this.addElement.bind(this)}/>
