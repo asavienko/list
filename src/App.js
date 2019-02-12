@@ -12,30 +12,26 @@ class App extends Component {
   }
 
   addElement = (value) => {
-    this.state.arrayOfElements.push(value);
-    console.log(this.state.arrayOfElements)
-    //possible todo
-    //const newArray = this.state.arrayOfElements.concat(value);
-    //this.setState({arrayOfElements: newArray});
-    //
-  };
-
-  showElements = ({arrayOfElements: array}) => {
-    const elements = array.length > 0 && array.map((element, index) => {
-        return (<li key={index.toString()}>{element}
-          <button>Delete</button>
-        </li>)
-      }
-    );
-    return elements;
+    const newArray = this.state.arrayOfElements.concat(value);
+    this.setState({arrayOfElements: newArray});
   };
 
   render() {
     //debug what you have here in this.state
+    const {arrayOfElements} = this.state;
     return (
       <div className="App">
         <InputComponent addElement={this.addElement.bind(this)}/>
-        <ul>{this.showElements(this.state)}</ul>
+        <ul>
+          {arrayOfElements.length > 0 && arrayOfElements.map((element, index) => {
+              return (
+                  <li key={index}>
+                    {element}
+                    <button>Delete</button>
+                  </li>
+              )}
+          )}
+        </ul>
       </div>
     );
   }

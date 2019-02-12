@@ -2,14 +2,13 @@ import React from "react"
 
 class InputComponent extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {value: ""}
   }
 
-  onSubmit = (e) => {
+  onSubmit = () => {
     this.props.addElement(this.state.value);
-    document.getElementById("submit").value=""; /*i don`t know how to do it by other way*/
-    e.preventDefault();
+    this.setState({value: ""})
   };
 
   handleInputChange = (e) => {
@@ -17,10 +16,10 @@ class InputComponent extends React.Component {
   };
 
   render() {
-    return <form onSubmit={this.onSubmit}>
-      <input onChange={this.handleInputChange} id={"submit"}/>
-      <input type={"submit"}/>
-    </form>
+    return <React.Fragment>
+      <input onChange={this.handleInputChange} id={"submit"} value={this.state.value}/>
+      <button onClick={()=>this.onSubmit()}>Submit</button>
+    </React.Fragment>
   }
 }
 
