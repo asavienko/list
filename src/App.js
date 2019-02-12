@@ -1,23 +1,22 @@
 import React, {Component} from 'react';
 import './App.css';
 import InputComponent from "./inputComponent";
-import ShowComponent from "./showComponent";
+import ListStyleComponent from "./listStyleComponent";
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {arrayOfElements: ["asd", "adasda"]};
+    this.state = {arrayOfElements: []};
 
   }
 
   addElement = (value) => {
-    const newArray = this.state.arrayOfElements.concat(value);
-    this.setState({arrayOfElements: newArray});
+    const newArrayOfToDos = this.state.arrayOfElements.concat(value);
+    this.setState({arrayOfElements: newArrayOfToDos});
   };
 
   render() {
-    //debug what you have here in this.state
     const {arrayOfElements} = this.state;
     return (
       <div className="App">
@@ -25,10 +24,7 @@ class App extends Component {
         <ul>
           {arrayOfElements.length > 0 && arrayOfElements.map((element, index) => {
               return (
-                  <li key={index}>
-                    {element}
-                    <button>Delete</button>
-                  </li>
+                  <ListStyleComponent element={element} index={index}/>
               )}
           )}
         </ul>
