@@ -3,6 +3,13 @@ import './App.css';
 import InputComponent from "./inputComponent";
 import ListStyleComponent from "./listStyleComponent";
 
+const styles = {
+  centerWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }
+}
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +26,7 @@ class App extends Component {
   render() {
     const {arrayOfElements} = this.state;
     return (
-      <div className="App">
+      <div className="App" style={styles.centerWrapper}>
         <InputComponent addElement={this.addElement.bind(this)}/>
         <ul>
           {arrayOfElements.length > 0 && arrayOfElements.map((element, index) => {
